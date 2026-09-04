@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Music</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages (rafgraph/spa-github-pages, MIT).
+      // GitHub Pages has no server-side app -- a fresh request for
+      // /apple-music/album/some-slug/123 finds no matching file and serves
+      // this page's bytes, but window.location still reflects the
+      // ORIGINALLY requested URL. This folds that path into a query string
+      // and redirects to the real index.html, which restores it (see the
+      // matching script in index.html) before React/the router ever mount.
+      //
+      // pathSegmentsToKeep = 1: this is a GitHub Pages *project* site
+      // (pawar-mahesh.github.io/apple-music/), so the first path segment
+      // ("apple-music") is the real base directory, not part of the route,
+      // and must be preserved rather than folded into the query string.
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

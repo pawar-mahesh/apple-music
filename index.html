@@ -4,9 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/apple-music/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages (rafgraph/spa-github-pages, MIT).
+      // Restores the real clean URL 404.html encoded into the query string
+      // via history.replaceState -- no network request, no re-render --
+      // before this page's own module bundle (and BrowserRouter) load.
+      // Inline + non-module: guaranteed to run synchronously during
+      // parsing, before the deferred type="module" bundle script below.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
     <title>Music — Design System</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-B3kFQ7Rt.js"></script>
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-BRWxZBhS.css">
+    <script type="module" crossorigin src="/apple-music/assets/index-eJUHo0hP.js"></script>
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-DrZ1A13B.css">
   </head>
   <body>
     <div id="root"></div>
