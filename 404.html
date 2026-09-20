@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Icons and manifest are written with the deploy's base path in them.
+         Vite rewrites `/foo` in these attributes only for assets it processes,
+         and everything here lives in public/ and is copied verbatim — so the
+         base is spelled out rather than assumed. -->
+    <link rel="icon" type="image/png" href="/apple-music/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-music/apple-touch-icon.png" />
+    <link rel="manifest" href="/apple-music/manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
          bar: together these are what let the stylesheet contain no
          env(safe-area-inset-*) at all, which is how music.apple.com is built.
@@ -17,9 +23,16 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- The name iOS puts under the home-screen icon. Without it, iOS falls
+         back to <title>, which is the page's name rather than the app's. -->
+    <meta name="apple-mobile-web-app-title" content="Music" />
+    <meta name="application-name" content="Music" />
+    <!-- Windows tile colour, used by Edge when the app is pinned. -->
+    <meta name="msapplication-TileColor" content="#1f1f1f" />
+    <meta name="description" content="Browse, search and play music from the Apple Music catalogue." />
     <meta name="theme-color" content="#1f1f1f" />
     <title>Apple Music</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-BUEUO-ji.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-BDhybgH4.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-DHuv2Nup.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-DKzB0zcm.js">

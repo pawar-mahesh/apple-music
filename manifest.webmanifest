@@ -1,0 +1,70 @@
+{
+  "id": "/apple-music/",
+  "name": "Music Player",
+  "short_name": "Music",
+  "description": "Browse, search and play music from the Apple Music catalogue.",
+  "start_url": "/apple-music/",
+  "scope": "/apple-music/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#1f1f1f",
+  "theme_color": "#1f1f1f",
+  "categories": [
+    "music",
+    "entertainment"
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "icons": [
+    {
+      "src": "/apple-music/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-music/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-music/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-music/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search",
+      "url": "/apple-music/search",
+      "icons": [
+        {
+          "src": "/apple-music/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "New",
+      "url": "/apple-music/new",
+      "icons": [
+        {
+          "src": "/apple-music/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
