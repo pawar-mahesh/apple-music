@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
+         bar: together these are what let the stylesheet contain no
+         env(safe-area-inset-*) at all, which is how music.apple.com is built.
+         Opting into cover here is what put the header underneath the status
+         bar in the first place; without it the browser keeps the page clear of
+         the notch and home indicator on its own, so no inset is needed and the
+         chrome measures exactly Apple's 52px / 61px. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#1f1f1f" />
+    <title>Apple Music</title>
+    <script type="module" crossorigin src="/apple-music/assets/index-CA1tIRxk.js"></script>
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/react-DHuv2Nup.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/state-DKzB0zcm.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/router-BundBQWM.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-Bwc-jS56.js">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-DLFY-9hO.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
