@@ -2,13 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Icons and manifest are written with the deploy's base path in them.
-         Vite rewrites `/foo` in these attributes only for assets it processes,
-         and everything here lives in public/ and is copied verbatim — so the
-         base is spelled out rather than assumed. -->
-    <link rel="icon" type="image/png" href="/apple-music/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-music/apple-touch-icon.png" />
-    <link rel="manifest" href="/apple-music/manifest.webmanifest" />
+    <!-- RELATIVE, not rooted at the deploy's base path.
+         These files live in public/ and are copied verbatim, so Vite never
+         rewrites them — which is why they used to spell out /apple-music/. A
+         relative href resolves against this document instead, so it is correct
+         wherever the app is served from: under the base path on Pages, and at
+         the root of any other host or a local static server. Rooted at
+         /apple-music/, that second case fetched the host's HTML 404 page for
+         the manifest, which the browser then reported as
+         "Manifest: Line: 1, column: 1, Syntax error". -->
+    <!-- SVG first: a browser that supports it scales the vector to whatever
+         the tab, bookmark bar or task switcher asks for, at any display
+         density, instead of resampling a raster. The PNG stays for the ones
+         that do not (Safari), and is 96px so the 16-32 CSS px a tab draws is
+         a downscale even on a 2x display. -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
          bar: together these are what let the stylesheet contain no
          env(safe-area-inset-*) at all, which is how music.apple.com is built.
@@ -23,23 +34,25 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!-- The name iOS puts under the home-screen icon. Without it, iOS falls
-         back to <title>, which is the page's name rather than the app's. -->
-    <meta name="apple-mobile-web-app-title" content="Music" />
-    <meta name="application-name" content="Music" />
+    <!-- The name iOS puts under the home-screen icon, and the one Windows
+         uses for a pinned site. Both spell out "Apple Music" rather than
+         "Music", so an installed copy is labelled the same on every platform
+         as the manifest labels it on Android and the desktop. -->
+    <meta name="apple-mobile-web-app-title" content="Apple Music" />
+    <meta name="application-name" content="Apple Music" />
     <!-- Windows tile colour, used by Edge when the app is pinned. -->
     <meta name="msapplication-TileColor" content="#1f1f1f" />
     <meta name="description" content="Browse, search and play music from the Apple Music catalogue." />
     <meta name="theme-color" content="#1f1f1f" />
     <title>Apple Music</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-tuwxCFOb.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-C1z9mrxq.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/react-DHuv2Nup.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/state-DKzB0zcm.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/router-Bl14Wiy8.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-Cu_gnS8r.js">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/PauseIcon-CStf2O_7.css">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-C6SRpBpl.css">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/state-CEg7tEuT.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/router-CoGmKOLQ.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-BZr2GNDL.js">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/PauseIcon-CWqJybro.css">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-M15ptJUO.css">
   </head>
   <body>
     <div id="root"></div>

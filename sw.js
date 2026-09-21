@@ -1,34 +1,37 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-17-dx-102o";
+const CACHE = "music-shell-17-dx-12dj";
+// Wherever this worker was registered from — the scope is the app's base,
+// whatever path that turns out to be.
+const SCOPE = self.registration.scope;
 const SHELL = [
-  "/apple-music/",
-  "/apple-music/apple-touch-icon.png",
-  "/apple-music/favicon.png",
-  "/apple-music/icon-192.png",
-  "/apple-music/icon-512.png",
-  "/apple-music/icon-maskable-512.png",
-  "/apple-music/icon.svg",
-  "/apple-music/index.html",
-  "/apple-music/manifest.webmanifest",
-  "/apple-music/assets/ArtistPage-BSApOn8i.js",
-  "/apple-music/assets/ArtistPage-DszuJYDr.css",
-  "/apple-music/assets/DetailPage-BUDzK5DX.js",
-  "/apple-music/assets/DetailPage-CQ0Fzp_c.css",
-  "/apple-music/assets/NowPlaying--8uL3mrQ.js",
-  "/apple-music/assets/NowPlaying-zvQVNrvX.css",
-  "/apple-music/assets/PauseIcon-CStf2O_7.css",
-  "/apple-music/assets/PauseIcon-Cu_gnS8r.js",
-  "/apple-music/assets/SearchPage-BEWLgy_C.css",
-  "/apple-music/assets/SearchPage-Jrj65K-K.js",
-  "/apple-music/assets/index-C6SRpBpl.css",
-  "/apple-music/assets/index-tuwxCFOb.js",
-  "/apple-music/assets/react-DHuv2Nup.js",
-  "/apple-music/assets/rolldown-runtime-CbXtAM7H.js",
-  "/apple-music/assets/router-Bl14Wiy8.js",
-  "/apple-music/assets/state-DKzB0zcm.js",
-  "/apple-music/assets/useQueuePlayback-iYoAE4Hu.js"
-];
-const INDEX = "/apple-music/index.html";
+  "",
+  "apple-touch-icon.png",
+  "favicon.png",
+  "icon-192.png",
+  "icon-512.png",
+  "icon-maskable-512.png",
+  "icon.svg",
+  "index.html",
+  "manifest.webmanifest",
+  "assets/ArtistPage-CaiL8x5i.js",
+  "assets/ArtistPage-DRLHbfpY.css",
+  "assets/DetailPage-BxrTxvgF.js",
+  "assets/DetailPage-Ci5RoSgS.css",
+  "assets/NowPlaying-CygFuzgh.js",
+  "assets/NowPlaying-zvQVNrvX.css",
+  "assets/PauseIcon-BZr2GNDL.js",
+  "assets/PauseIcon-CWqJybro.css",
+  "assets/SearchPage-BEWLgy_C.css",
+  "assets/SearchPage-BtbsiZ35.js",
+  "assets/index-C1z9mrxq.js",
+  "assets/index-M15ptJUO.css",
+  "assets/react-D3MgmOsQ.js",
+  "assets/rolldown-runtime-CbXtAM7H.js",
+  "assets/router-CoGmKOLQ.js",
+  "assets/state-CEg7tEuT.js",
+  "assets/useQueuePlayback-BRD8AHib.js"
+].map((path) => new URL(path, SCOPE).href);
+const INDEX = new URL("index.html", SCOPE).href;
 
 self.addEventListener("install", (event) => {
   // Skip waiting so a deploy takes effect on the next load rather than once
