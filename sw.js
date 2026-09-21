@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-17-dx-12dj";
+const CACHE = "music-shell-25-li-12ir";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -13,23 +13,31 @@ const SHELL = [
   "icon.svg",
   "index.html",
   "manifest.webmanifest",
-  "assets/ArtistPage-CaiL8x5i.js",
+  "assets/ArtistPage-CmQF23y7.js",
   "assets/ArtistPage-DRLHbfpY.css",
-  "assets/DetailPage-BxrTxvgF.js",
-  "assets/DetailPage-Ci5RoSgS.css",
-  "assets/NowPlaying-CygFuzgh.js",
+  "assets/DetailPage-BFymE3w0.js",
+  "assets/DetailPage-CU7rT6LA.css",
+  "assets/DetailPage-YpgR8h5B.css",
+  "assets/DetailPage.module-C1D254Om.js",
+  "assets/FavouritesPage-Do-G2WwK.js",
+  "assets/NowPlaying-CHOOZ7CW.js",
   "assets/NowPlaying-zvQVNrvX.css",
-  "assets/PauseIcon-BZr2GNDL.js",
+  "assets/PauseIcon-BFE1b3WJ.js",
   "assets/PauseIcon-CWqJybro.css",
+  "assets/SearchPage-4GMJJgA9.js",
   "assets/SearchPage-BEWLgy_C.css",
-  "assets/SearchPage-BtbsiZ35.js",
-  "assets/index-C1z9mrxq.js",
-  "assets/index-M15ptJUO.css",
+  "assets/UserPlaylistPage-DGW3zKRq.js",
+  "assets/UserPlaylistPage-nD_kkc-N.css",
+  "assets/index-CUAnqfeL.js",
+  "assets/index-DXQDyd0D.css",
   "assets/react-D3MgmOsQ.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/router-CoGmKOLQ.js",
-  "assets/state-CEg7tEuT.js",
-  "assets/useQueuePlayback-BRD8AHib.js"
+  "assets/state-D5uMKkKi.js",
+  "assets/toDetailTrack-Fi4_gbyh.js",
+  "assets/useFavourite-BQXRV21y.js",
+  "assets/useFavourite-BlEC8g2D.css",
+  "assets/useQueuePlayback-BKNci7bw.js"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
