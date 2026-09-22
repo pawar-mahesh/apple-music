@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-25-li-12ir";
+const CACHE = "music-shell-27-ne-12ir";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -13,31 +13,33 @@ const SHELL = [
   "icon.svg",
   "index.html",
   "manifest.webmanifest",
-  "assets/ArtistPage-CmQF23y7.js",
-  "assets/ArtistPage-DRLHbfpY.css",
-  "assets/DetailPage-BFymE3w0.js",
-  "assets/DetailPage-CU7rT6LA.css",
-  "assets/DetailPage-YpgR8h5B.css",
-  "assets/DetailPage.module-C1D254Om.js",
-  "assets/FavouritesPage-Do-G2WwK.js",
-  "assets/NowPlaying-CHOOZ7CW.js",
+  "assets/ArtistPage-B2UpF5cs.css",
+  "assets/ArtistPage-DICEjTNM.js",
+  "assets/DetailPage-Bma1IWoE.js",
+  "assets/DetailPage-CXmoZ6dg.css",
+  "assets/DetailPage-D_wMrDk9.css",
+  "assets/DetailPage.module-CRm7_F0I.js",
+  "assets/FavouriteIcon-2F1rcqtn.js",
+  "assets/FavouritesPage-B9IuX7kG.css",
+  "assets/FavouritesPage-COiQYHhD.js",
+  "assets/NowPlaying-DnhNiYm6.js",
   "assets/NowPlaying-zvQVNrvX.css",
-  "assets/PauseIcon-BFE1b3WJ.js",
   "assets/PauseIcon-CWqJybro.css",
-  "assets/SearchPage-4GMJJgA9.js",
-  "assets/SearchPage-BEWLgy_C.css",
-  "assets/UserPlaylistPage-DGW3zKRq.js",
-  "assets/UserPlaylistPage-nD_kkc-N.css",
-  "assets/index-CUAnqfeL.js",
-  "assets/index-DXQDyd0D.css",
+  "assets/PauseIcon-GLNG_KIk.js",
+  "assets/SearchPage-CLDBwmR-.css",
+  "assets/SearchPage-ItTxWP73.js",
+  "assets/UserPlaylistPage-BuFmemDq.js",
+  "assets/UserPlaylistPage-DJ3lJwCW.css",
+  "assets/index-BR37wLay.css",
+  "assets/index-BVfSpicc.js",
   "assets/react-D3MgmOsQ.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/router-CoGmKOLQ.js",
   "assets/state-D5uMKkKi.js",
-  "assets/toDetailTrack-Fi4_gbyh.js",
-  "assets/useFavourite-BQXRV21y.js",
-  "assets/useFavourite-BlEC8g2D.css",
-  "assets/useQueuePlayback-BKNci7bw.js"
+  "assets/toDetailTrack-DRGDe0bO.js",
+  "assets/toPlayerSong-FSBXYBTK.js",
+  "assets/toPlayerSong-leG772tO.css",
+  "assets/useQueuePlayback-Ck7Qk6h0.js"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
