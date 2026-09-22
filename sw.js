@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-bfa39a0540c2";
+const CACHE = "music-shell-af5048e7e55c";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -17,33 +17,16 @@ const SHELL = [
   "icon-maskable-512-dfcfd2eb.png",
   "index.html",
   "manifest.webmanifest",
-  "assets/ArtistPage-B2UpF5cs.css",
-  "assets/ArtistPage-hFNUe4q3.js",
-  "assets/DetailPage-CXmoZ6dg.css",
-  "assets/DetailPage-D_wMrDk9.css",
-  "assets/DetailPage-DaJ3y9WJ.js",
-  "assets/DetailPage.module-D7w7DYk5.js",
-  "assets/FavouriteIcon-2F1rcqtn.js",
-  "assets/FavouritesPage-B9IuX7kG.css",
-  "assets/FavouritesPage-Cyy7RN17.js",
-  "assets/NowPlaying-BtsVOGNN.css",
-  "assets/NowPlaying-LeHRS41y.js",
-  "assets/PauseIcon-CWqJybro.css",
-  "assets/PauseIcon-GLNG_KIk.js",
-  "assets/SearchPage-CLDBwmR-.css",
-  "assets/SearchPage-D1pKhiIC.js",
-  "assets/UserPlaylistPage-DJ3lJwCW.css",
-  "assets/UserPlaylistPage-tDKXasQ3.js",
-  "assets/index-CU6Sn6BK.js",
-  "assets/index-nD-mtmB9.css",
-  "assets/react-D3MgmOsQ.js",
+  "assets/index-DC1w9Lg9.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
-  "assets/router-CoGmKOLQ.js",
+  "assets/react-D3MgmOsQ.js",
   "assets/state-D5uMKkKi.js",
-  "assets/toDetailTrack-DgqCE7za.js",
-  "assets/toPlayerSong-Cynz4drZ.js",
+  "assets/router-CoGmKOLQ.js",
+  "assets/PauseIcon-ln3i83w5.js",
+  "assets/toPlayerSong-Bby8P7e_.js",
+  "assets/PauseIcon-CWqJybro.css",
   "assets/toPlayerSong-leG772tO.css",
-  "assets/useQueuePlayback-B6JyKsEM.js"
+  "assets/index-nD-mtmB9.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 

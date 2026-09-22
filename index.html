@@ -2,15 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- RELATIVE, not rooted at the deploy's base path.
+    <!-- /apple-music/ — an ABSOLUTE path, built from Vite's own `base`.
          These files live in public/ and are copied verbatim, so Vite never
-         rewrites them — which is why they used to spell out /apple-music/. A
-         relative href resolves against this document instead, so it is correct
-         wherever the app is served from: under the base path on Pages, and at
-         the root of any other host or a local static server. Rooted at
-         /apple-music/, that second case fetched the host's HTML 404 page for
-         the manifest, which the browser then reported as
-         "Manifest: Line: 1, column: 1, Syntax error". -->
+         rewrites their hrefs the way it rewrites the script and stylesheet
+         ones below. That leaves three options and only one of them works.
+
+         Rooted at a hardcoded /apple-music/ they break anywhere else, which is
+         how they were first written.
+
+         RELATIVE they break on every nested route, which is how they were
+         written until now and is the worse failure of the two, because the app
+         is made of nested routes. A relative href resolves against the
+         DOCUMENT, and on Pages a deep link is served the SPA fallback at its
+         own deep URL — so on
+           /apple-music/playlist/work-out-with-bollywood/pl.f47c…
+         the browser went looking for
+           /apple-music/playlist/work-out-with-bollywood/icon-cf0c54da.svg
+         and got a 404, which it renders as no icon at all. The manifest went
+         the same way, so a deep link was also not installable. Both are
+         invisible from the home page, where the two resolve identically.
+
+         /apple-music/ is Vite's own placeholder for `base`, substituted at build
+         and serving "/" in dev. It is absolute, so it resolves to the same
+         file from any route depth, and it is the SAME value the router's
+         basename reads — the two cannot drift apart. -->
     <!-- Four icon declarations, and each one is the ONLY thing some platform
          will read:
            .ico       Windows, and anything that probes /favicon-214c8360.ico without
@@ -30,11 +45,11 @@
          At build time every href here is rewritten to a content-hashed name —
          see versionedIcons in vite.config.ts — so a changed icon is a changed
          URL and no cache can keep serving the old one. -->
-    <link rel="icon" sizes="48x48" href="favicon-214c8360.ico" />
-    <link rel="icon" type="image/svg+xml" href="icon-cf0c54da.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-afbc3f41.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-ffc0ac73.png" />
-    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" sizes="48x48" href="/apple-music/favicon-214c8360.ico" />
+    <link rel="icon" type="image/svg+xml" href="/apple-music/icon-cf0c54da.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/apple-music/favicon-afbc3f41.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-music/apple-touch-icon-ffc0ac73.png" />
+    <link rel="manifest" href="/apple-music/manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
          bar: together these are what let the stylesheet contain no
          env(safe-area-inset-*) at all, which is how music.apple.com is built.
@@ -60,13 +75,13 @@
     <meta name="description" content="Browse, search and play music from the Apple Music catalogue." />
     <meta name="theme-color" content="#1f1f1f" />
     <title>Apple Music</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-CU6Sn6BK.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-DC1w9Lg9.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-D5uMKkKi.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/router-CoGmKOLQ.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-GLNG_KIk.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/toPlayerSong-Cynz4drZ.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-ln3i83w5.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/toPlayerSong-Bby8P7e_.js">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/PauseIcon-CWqJybro.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/toPlayerSong-leG772tO.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/index-nD-mtmB9.css">
