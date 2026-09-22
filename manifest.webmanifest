@@ -22,24 +22,31 @@
   },
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "icon-cf0c54da.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "icon-192.png",
+      "src": "icon-192-55e3c59e.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "icon-512-41dd4af5.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-maskable-512.png",
+      "src": "icon-maskable-192-cf0efde8.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-maskable-512-dfcfd2eb.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -51,8 +58,10 @@
       "url": "search",
       "icons": [
         {
-          "src": "icon-192.png",
-          "sizes": "192x192"
+          "src": "icon-192-55e3c59e.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any"
         }
       ]
     },
@@ -61,8 +70,10 @@
       "url": "new",
       "icons": [
         {
-          "src": "icon-192.png",
-          "sizes": "192x192"
+          "src": "icon-192-55e3c59e.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any"
         }
       ]
     }

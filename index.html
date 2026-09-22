@@ -11,14 +11,29 @@
          /apple-music/, that second case fetched the host's HTML 404 page for
          the manifest, which the browser then reported as
          "Manifest: Line: 1, column: 1, Syntax error". -->
-    <!-- SVG first: a browser that supports it scales the vector to whatever
-         the tab, bookmark bar or task switcher asks for, at any display
-         density, instead of resampling a raster. The PNG stays for the ones
-         that do not (Safari), and is 96px so the 16-32 CSS px a tab draws is
-         a downscale even on a 2x display. -->
-    <link rel="icon" type="image/svg+xml" href="icon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!-- Four icon declarations, and each one is the ONLY thing some platform
+         will read:
+           .ico       Windows, and anything that probes /favicon-214c8360.ico without
+                      looking at this document at all. Multi-resolution
+                      (16/32/48) so no client has to resample.
+           SVG        every modern browser: one vector scaled to whatever the
+                      tab, bookmark bar or task switcher asks for, at any
+                      display density, instead of resampling a raster.
+           PNG 96     the fallback for browsers with no SVG icon support, at a
+                      size the 16-32 CSS px a tab draws is a downscale of even
+                      on a 2x display.
+           180 PNG    iOS and iPadOS home screens, which ignore the manifest
+                      entirely and read only this tag. 180x180 is what the
+                      current devices ask for; `sizes` is spelled out so the OS
+                      does not have to fetch it to find out.
+         Android and the desktop install dialogs take theirs from the manifest.
+         At build time every href here is rewritten to a content-hashed name —
+         see versionedIcons in vite.config.ts — so a changed icon is a changed
+         URL and no cache can keep serving the old one. -->
+    <link rel="icon" sizes="48x48" href="favicon-214c8360.ico" />
+    <link rel="icon" type="image/svg+xml" href="icon-cf0c54da.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-afbc3f41.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-ffc0ac73.png" />
     <link rel="manifest" href="manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
          bar: together these are what let the stylesheet contain no
@@ -45,16 +60,16 @@
     <meta name="description" content="Browse, search and play music from the Apple Music catalogue." />
     <meta name="theme-color" content="#1f1f1f" />
     <title>Apple Music</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-BVfSpicc.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-CU6Sn6BK.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-D5uMKkKi.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/router-CoGmKOLQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-GLNG_KIk.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/toPlayerSong-FSBXYBTK.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/toPlayerSong-Cynz4drZ.js">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/PauseIcon-CWqJybro.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/toPlayerSong-leG772tO.css">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-BR37wLay.css">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-nD-mtmB9.css">
   </head>
   <body>
     <div id="root"></div>
