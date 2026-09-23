@@ -1,20 +1,21 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-249b6d6f89f3";
+const CACHE = "music-shell-119d2557c649";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
 const SHELL = [
   "",
-  "apple-touch-icon-ffc0ac73.png",
+  "apple-touch-icon-d47a9e70.png",
   "apple-touch-icon.png",
-  "favicon-214c8360.ico",
-  "favicon-afbc3f41.png",
+  "favicon-1abbf1db.png",
+  "favicon-2b6befc5.ico",
   "favicon.ico",
-  "icon-192-55e3c59e.png",
-  "icon-512-41dd4af5.png",
-  "icon-cf0c54da.svg",
-  "icon-maskable-192-cf0efde8.png",
-  "icon-maskable-512-dfcfd2eb.png",
+  "icon-1024-154eaf65.png",
+  "icon-192-5be1e524.png",
+  "icon-512-554c2571.png",
+  "icon-706c8c9f.svg",
+  "icon-maskable-192-2b319507.png",
+  "icon-maskable-512-2751871c.png",
   "index.html",
   "manifest.webmanifest",
   "assets/index-DYWsBhgt.js",

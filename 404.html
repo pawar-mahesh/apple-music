@@ -17,7 +17,7 @@
          own deep URL — so on
            /apple-music/playlist/work-out-with-bollywood/pl.f47c…
          the browser went looking for
-           /apple-music/playlist/work-out-with-bollywood/icon-cf0c54da.svg
+           /apple-music/playlist/work-out-with-bollywood/icon-706c8c9f.svg
          and got a 404, which it renders as no icon at all. The manifest went
          the same way, so a deep link was also not installable. Both are
          invisible from the home page, where the two resolve identically.
@@ -26,9 +26,9 @@
          and serving "/" in dev. It is absolute, so it resolves to the same
          file from any route depth, and it is the SAME value the router's
          basename reads — the two cannot drift apart. -->
-    <!-- Four icon declarations, and each one is the ONLY thing some platform
-         will read:
-           .ico       Windows, and anything that probes /favicon-214c8360.ico without
+    <!-- Four icon declarations, all drawn from Apple's own 1024px music-icon
+         artwork, and each one is the ONLY thing some platform will read:
+           .ico       Windows, and anything that probes /favicon-2b6befc5.ico without
                       looking at this document at all. Multi-resolution
                       (16/32/48) so no client has to resample.
            SVG        every modern browser: one vector scaled to whatever the
@@ -42,13 +42,23 @@
                       current devices ask for; `sizes` is spelled out so the OS
                       does not have to fetch it to find out.
          Android and the desktop install dialogs take theirs from the manifest.
+         Every icon is drawn from the one geometry in icon-706c8c9f.svg, fitted to the
+         Music app icon macOS 26 renders at 1024px: the note at the app's
+         size and position, and the .ico, SVG, PNG 96 and the manifest's "any"
+         icons cut to its continuous-corner squircle (SwiftUI's .continuous
+         rounded rect at 26.05% of the side) with transparent corners, since
+         browsers and Windows draw them exactly as shipped. The touch icon and
+         the maskable icons stay full-bleed squares: iOS, iPadOS and Android
+         cut those to their own shape, and a pre-rounded one would come out
+         with filled-in corners. The maskable pair alone draws the note at 96%,
+         the most that keeps it inside Android's 40%-radius safe circle.
          At build time every href here is rewritten to a content-hashed name —
          see versionedIcons in vite.config.ts — so a changed icon is a changed
          URL and no cache can keep serving the old one. -->
-    <link rel="icon" sizes="48x48" href="/apple-music/favicon-214c8360.ico" />
-    <link rel="icon" type="image/svg+xml" href="/apple-music/icon-cf0c54da.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/apple-music/favicon-afbc3f41.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-music/apple-touch-icon-ffc0ac73.png" />
+    <link rel="icon" sizes="48x48" href="/apple-music/favicon-2b6befc5.ico" />
+    <link rel="icon" type="image/svg+xml" href="/apple-music/icon-706c8c9f.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/apple-music/favicon-1abbf1db.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-music/apple-touch-icon-d47a9e70.png" />
     <link rel="manifest" href="/apple-music/manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
          bar: together these are what let the stylesheet contain no
