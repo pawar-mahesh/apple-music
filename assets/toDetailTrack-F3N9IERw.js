@@ -1,0 +1,1 @@
+function e(e){return{id:e.id,title:e.title,artistName:e.subtitle??``,artists:e.artists??[],albumName:e.albumName,albumHref:e.albumHref,artwork:e.artwork,durationInMillis:e.durationInMillis,previewUrl:e.previewUrl,href:e.href}}export{e as t};
