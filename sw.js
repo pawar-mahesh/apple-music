@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-076a95be991e";
+const CACHE = "music-shell-6a61524ca980";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -18,16 +18,16 @@ const SHELL = [
   "icon-maskable-512-2751871c.png",
   "index.html",
   "manifest.webmanifest",
-  "assets/index-Cp6LJGyW.js",
+  "assets/index-DITGtEcK.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-ttzPfvfD.js",
-  "assets/router-CoGmKOLQ.js",
-  "assets/PauseIcon-C-fescBV.js",
-  "assets/toPlayerSong-C6rO-RxC.js",
+  "assets/router-Dm2nHIQG.js",
+  "assets/PauseIcon-BDrE0Nt-.js",
+  "assets/toPlayerSong-Dm6_ydUk.js",
   "assets/PauseIcon-Bo3-IQlm.css",
   "assets/toPlayerSong-CbtUf2FD.css",
-  "assets/index-bozpYkSy.css"
+  "assets/index-C2kiiLcV.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
