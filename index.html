@@ -2,30 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- /apple-music/ — an ABSOLUTE path, built from Vite's own `base`.
-         These files live in public/ and are copied verbatim, so Vite never
-         rewrites their hrefs the way it rewrites the script and stylesheet
-         ones below. That leaves three options and only one of them works.
+    <!-- Root paths ("/icon-706c8c9f.svg"), and Vite puts the `base` in front of them.
+         These files live in public/, and Vite's documented way to link one is
+         its path from the root: in dev AND at build time it rewrites the href
+         to `${base}icon-706c8c9f.svg`, so it resolves to the same file from any route
+         depth and follows `base` wherever the app is deployed.
 
-         Rooted at a hardcoded /apple-music/ they break anywhere else, which is
-         how they were first written.
-
-         RELATIVE they break on every nested route, which is how they were
-         written until now and is the worse failure of the two, because the app
-         is made of nested routes. A relative href resolves against the
-         DOCUMENT, and on Pages a deep link is served the SPA fallback at its
-         own deep URL — so on
-           /apple-music/playlist/work-out-with-bollywood/pl.f47c…
-         the browser went looking for
-           /apple-music/playlist/work-out-with-bollywood/icon-706c8c9f.svg
-         and got a 404, which it renders as no icon at all. The manifest went
-         the same way, so a deep link was also not installable. Both are
-         invisible from the home page, where the two resolve identically.
-
-         /apple-music/ is Vite's own placeholder for `base`, substituted at build
-         and serving "/" in dev. It is absolute, so it resolves to the same
-         file from any route depth, and it is the SAME value the router's
-         basename reads — the two cannot drift apart. -->
+         Written any other way they break somewhere:
+           - hardcoded /apple-music/ breaks anywhere else;
+           - RELATIVE breaks on every nested route: on
+               /apple-music/playlist/work-out-with-bollywood/pl.f47c…
+             the browser asked for …/work-out-with-bollywood/icon-706c8c9f.svg, got a
+             404 and drew no icon, and the manifest failed the same way, so a
+             deep link was not installable;
+           - /apple-music/ is right at build time, but Vite 8's dev server adds
+             the base AGAIN to a public-file href, so dev asked for
+             /apple-music/apple-music/manifest.webmanifest, got the HTML
+             fallback, and the console reported the manifest as a syntax error
+             at line 1, column 1. -->
     <!-- Four icon declarations, all drawn from Apple's own 1024px music-icon
          artwork, and each one is the ONLY thing some platform will read:
            .ico       Windows, and anything that probes /favicon-2b6befc5.ico without
@@ -85,15 +79,15 @@
     <meta name="description" content="Browse, search and play music from the Apple Music catalogue." />
     <meta name="theme-color" content="#1f1f1f" />
     <title>Apple Music</title>
-    <script type="module" crossorigin src="/apple-music/assets/index-BFfEkL6E.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-DsFznJ50.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-ttzPfvfD.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/router-Dm2nHIQG.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/PauseIcon-D5ZB1-9v.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/tapToPlay-C1CWQSyH.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/tapToPlay-BsvlGfSg.js">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/PauseIcon-Bo3-IQlm.css">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/tapToPlay-Cj73OYUT.css">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/tapToPlay-B8cjFDC_.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/index-DqFPCAV8.css">
   </head>
   <body>
