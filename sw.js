@@ -1,33 +1,25 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-6a61524ca980";
+const CACHE = "music-shell-29b60dda834f";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
 const SHELL = [
-  "",
-  "apple-touch-icon-d47a9e70.png",
-  "apple-touch-icon.png",
-  "favicon-1abbf1db.png",
-  "favicon-2b6befc5.ico",
-  "favicon.ico",
-  "icon-1024-154eaf65.png",
-  "icon-192-5be1e524.png",
-  "icon-512-554c2571.png",
-  "icon-706c8c9f.svg",
-  "icon-maskable-192-2b319507.png",
-  "icon-maskable-512-2751871c.png",
   "index.html",
+  "favicon-2b6befc5.ico",
+  "icon-706c8c9f.svg",
+  "favicon-1abbf1db.png",
+  "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-DITGtEcK.js",
+  "assets/index-AnyOq16k.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-ttzPfvfD.js",
   "assets/router-Dm2nHIQG.js",
-  "assets/PauseIcon-BDrE0Nt-.js",
-  "assets/toPlayerSong-Dm6_ydUk.js",
+  "assets/PauseIcon-D5ZB1-9v.js",
+  "assets/tapToPlay-BKbth4Ld.js",
   "assets/PauseIcon-Bo3-IQlm.css",
-  "assets/toPlayerSong-CbtUf2FD.css",
-  "assets/index-C2kiiLcV.css"
+  "assets/tapToPlay-Cj73OYUT.css",
+  "assets/index-DqFPCAV8.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
@@ -56,15 +48,19 @@ self.addEventListener("fetch", (event) => {
   // deployed 404.html implements for a cold load.
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request).catch(() => caches.match(INDEX).then((r) => r || Response.error())),
+      fetch(request).catch(() => caches.match(INDEX, { ignoreVary: true }).then((r) => r || Response.error())),
     );
     return;
   }
 
   // Everything else is content-hashed and therefore immutable: a hit is served
-  // without revalidating, a miss is cached for next time.
+  // without revalidating, a miss is cached for next time. `ignoreVary`: the
+  // page asks for its module scripts in CORS mode, with an Origin header the
+  // install's addAll never sent, so a server that answers `Vary: Origin` (Vite's
+  // own preview server does) left every precached script unmatched — the
+  // shell came back offline and nothing in it could load.
   event.respondWith(
-    caches.match(request).then(
+    caches.match(request, { ignoreVary: true }).then(
       (hit) =>
         hit ||
         fetch(request).then((response) => {
