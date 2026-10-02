@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-d8ad574495b1";
+const CACHE = "music-shell-cf03ae6ba680";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,18 +10,19 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-Zh45PluV.js",
+  "assets/index-DwalqJC0.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
-  "assets/state-DC6alC8L.js",
+  "assets/state-BriS5RKY.js",
   "assets/router-ZOD6_S3u.js",
-  "assets/PauseIcon-BoYJN0gh.js",
-  "assets/Track-ab9ZLk-Y.js",
-  "assets/useCoarsePointer-vd9MuwzF.js",
-  "assets/PauseIcon-DAJKC4hf.css",
-  "assets/Track-Kczccnvm.css",
-  "assets/useCoarsePointer-S3lvtZIv.css",
-  "assets/index-ClxLEYbx.css"
+  "assets/FavouriteIcon-DM0qBoFO.js",
+  "assets/Track-_aSrUZYI.js",
+  "assets/useCoarsePointer-U4v0znxr.js",
+  "assets/TileGrid-BcEzsqWk.js",
+  "assets/FavouriteIcon-azvJxc9R.css",
+  "assets/Track-akkoPfkB.css",
+  "assets/TileGrid-S3lvtZIv.css",
+  "assets/index-MjFue8QK.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 

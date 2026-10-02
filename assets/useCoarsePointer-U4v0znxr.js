@@ -1,0 +1,1 @@
+import{Y as e}from"./FavouriteIcon-DM0qBoFO.js";var t=e(`(pointer: coarse)`);export{t};

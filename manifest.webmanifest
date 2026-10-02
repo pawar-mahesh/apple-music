@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Apple Music",
-  "short_name": "Apple Music",
-  "description": "Browse, search and play music from the Apple Music catalogue.",
+  "name": "Music",
+  "short_name": "Music",
+  "description": "Browse, search and play music.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
