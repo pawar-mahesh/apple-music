@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-943c38a1b3f6";
+const CACHE = "music-shell-d8ad574495b1";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,18 +10,18 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-B5kj4fuK.js",
+  "assets/index-Zh45PluV.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
-  "assets/state-Diq35Ybx.js",
-  "assets/router-Dm2nHIQG.js",
-  "assets/PauseIcon-AHRnH-Bh.js",
-  "assets/Track-CAeTfB7X.js",
-  "assets/useCoarsePointer-DPaSrOpN.js",
+  "assets/state-DC6alC8L.js",
+  "assets/router-ZOD6_S3u.js",
+  "assets/PauseIcon-BoYJN0gh.js",
+  "assets/Track-ab9ZLk-Y.js",
+  "assets/useCoarsePointer-vd9MuwzF.js",
   "assets/PauseIcon-DAJKC4hf.css",
-  "assets/Track-DU93dmyH.css",
+  "assets/Track-Kczccnvm.css",
   "assets/useCoarsePointer-S3lvtZIv.css",
-  "assets/index-CV7JDETQ.css"
+  "assets/index-ClxLEYbx.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
@@ -29,13 +29,25 @@ self.addEventListener("install", (event) => {
   // Skip waiting so a deploy takes effect on the next load rather than once
   // every tab has been closed.
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));
+  // `cache: "reload"` bypasses the HTTP cache: Pages serves index.html with
+  // max-age=600, so a worker installed just after a deploy could otherwise
+  // precache the PREVIOUS build's document, naming assets this cache lacks.
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(SHELL.map((url) => new Request(url, { cache: "reload" })))),
+  );
 });
 
 self.addEventListener("activate", (event) => {
+  // The previous version's cache is KEPT (only older ones go): a tab still
+  // running the old build names old lazy chunks that the new deploy no longer
+  // serves, and every match below searches all caches, so it keeps finding
+  // the ones it had already opened. caches.keys() is in creation order.
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => {
+        const older = keys.filter((k) => k !== CACHE);
+        return Promise.all(older.slice(0, -1).map((k) => caches.delete(k)));
+      })
       .then(() => self.clients.claim()),
   );
 });
@@ -50,7 +62,15 @@ self.addEventListener("fetch", (event) => {
   // deployed 404.html implements for a cold load.
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request).catch(() => caches.match(INDEX, { ignoreVary: true }).then((r) => r || Response.error())),
+      // The current version's shell first: the previous cache (kept, above)
+      // also holds an index.html, and caches.match would find that one first.
+      fetch(request).catch(() =>
+        caches
+          .open(CACHE)
+          .then((cache) => cache.match(INDEX, { ignoreVary: true }))
+          .then((r) => r || caches.match(INDEX, { ignoreVary: true }))
+          .then((r) => r || Response.error()),
+      ),
     );
     return;
   }
