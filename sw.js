@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-156ca0700a3b";
+const CACHE = "music-shell-49d05a67d34f";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,13 +10,13 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-BQnHpc04.js",
+  "assets/index-C2cU_y_V.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-BriS5RKY.js",
   "assets/router-ZOD6_S3u.js",
-  "assets/FavouriteIcon-BB-RncNB.js",
-  "assets/Track-BInZrrgW.js",
+  "assets/FavouriteIcon-FbVtVfWr.js",
+  "assets/Track-DYB2qM7B.js",
   "assets/FavouriteIcon-DEaYQ5FX.css",
   "assets/Track-DqpZa8qF.css",
   "assets/index-Dlx13KsE.css"
