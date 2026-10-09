@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-095ce5826538";
+const CACHE = "music-shell-9b1b3120d456";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,19 +10,19 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-D6jKm3tx.js",
+  "assets/index-yOQEPf_A.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-BriS5RKY.js",
   "assets/router-ZOD6_S3u.js",
   "assets/Modal-6Fg6JGw8.js",
-  "assets/useAccountState-BvdyqqsT.js",
+  "assets/useAccountState-HAERrLQm.js",
   "assets/audioQuality-B5o8QFE3.js",
-  "assets/FavouriteIcon-BZ8VqJJA.js",
+  "assets/FavouriteIcon-BmoRvDCY.js",
   "assets/PageStatus-E69RuqqT.js",
-  "assets/Track-ByzcJikT.js",
+  "assets/Track-BWYITzYr.js",
   "assets/Modal-Ao_1gA4n.css",
-  "assets/FavouriteIcon-Ciy1MY9V.css",
+  "assets/FavouriteIcon-cOrsbwMU.css",
   "assets/PageStatus-Cbz9HOCF.css",
   "assets/Track-CQKkcbxd.css",
   "assets/index-DHfkYbOf.css"
@@ -59,6 +59,9 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
+  // A partial request (a media element's Range) is the network's alone: a
+  // cached 206 is one fragment of the file, never the file.
+  if (request.headers.has("range")) return;
   // Other origins — the catalogue API, the artwork CDN — are never cached.
   if (new URL(request.url).origin !== self.location.origin) return;
 
@@ -68,13 +71,18 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       // The current version's shell first: the previous cache (kept, above)
       // also holds an index.html, and caches.match would find that one first.
-      fetch(request).catch(() =>
-        caches
-          .open(CACHE)
-          .then((cache) => cache.match(INDEX, { ignoreVary: true }))
-          .then((r) => r || caches.match(INDEX, { ignoreVary: true }))
-          .then((r) => r || Response.error()),
-      ),
+      // Never a rejection: one reached the browser as "the FetchEvent …
+      // resulted in a network error response: the promise was rejected"
+      // (storage unavailable, the cache gone): the network's own error instead.
+      fetch(request)
+        .catch(() =>
+          caches
+            .open(CACHE)
+            .then((cache) => cache.match(INDEX, { ignoreVary: true }))
+            .then((r) => r || caches.match(INDEX, { ignoreVary: true }))
+            .then((r) => r || Response.error()),
+        )
+        .catch(() => Response.error()),
     );
     return;
   }
@@ -85,6 +93,9 @@ self.addEventListener("fetch", (event) => {
   // install's addAll never sent, so a server that answers `Vary: Origin` (Vite's
   // own preview server does) left every precached script unmatched — the
   // shell came back offline and nothing in it could load.
+  // A fetch that fails (offline, a flaky connection, a deploy replacing the
+  // files mid-load) answers as the network error it is: left to reject, it
+  // surfaced as "Uncaught (in promise) TypeError: Failed to fetch" in the console.
   event.respondWith(
     caches.match(request, { ignoreVary: true }).then(
       (hit) =>
@@ -92,10 +103,11 @@ self.addEventListener("fetch", (event) => {
         fetch(request).then((response) => {
           if (response.ok && response.type === "basic") {
             const copy = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, copy));
+            // A full disk is a cache miss next time, not an error now.
+            caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
           }
           return response;
-        }),
-    ),
+        }, () => Response.error()),
+    ).catch(() => Response.error()),
   );
 });
