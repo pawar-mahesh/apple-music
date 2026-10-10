@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t}from"./react-D3MgmOsQ.js";import{f as n}from"./Modal-B1J9Vdji.js";import{H as r}from"./index-8CO8IG3q.js";var i=e(t(),1);function a(e){let t=n();return(0,i.useCallback)(n=>{let i=n.target.closest(`a`);if(!i)return;let a=i.getAttribute(`href`)??``,o=e.find(e=>a.endsWith(e.href));o&&t(r(o))},[e,t])}export{a as t};
