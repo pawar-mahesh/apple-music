@@ -1,0 +1,1 @@
+import{t as e}from"./react-D3MgmOsQ.js";import{z as t}from"./index-BvQ0cjH_.js";var n=e();function r({email:e,onConfirm:r,onClose:i}){return(0,n.jsx)(t,{title:`Delete Account?`,message:`${e} and everything saved to it will be deleted. This can’t be undone.`,confirmLabel:`Delete`,onConfirm:r,onClose:i})}export{r as t};
