@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-aa140562d3e2";
+const CACHE = "music-shell-c19aabeeae50";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,7 +10,7 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-CZvW5Zjm.js",
+  "assets/index-4sm3DQHh.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-BriS5RKY.js",
@@ -21,12 +21,12 @@ const SHELL = [
   "assets/useAccountState-CnOjCGeh.js",
   "assets/FavouriteIcon-B34NKF6-.js",
   "assets/PageStatus-Bss0o0_d.js",
-  "assets/Track-BQ0stuvL.js",
+  "assets/Track-DcgH8bPW.js",
   "assets/Modal-CWK1JsB0.css",
   "assets/ContextualMenu-Bx1sgt0h.css",
   "assets/FavouriteIcon-CQlVulA-.css",
   "assets/PageStatus-DP3AeeQe.css",
-  "assets/Track-CQKkcbxd.css",
+  "assets/Track-1MBzuS7p.css",
   "assets/index-BSR0sJ_T.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
