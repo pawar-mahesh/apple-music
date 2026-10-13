@@ -32,6 +32,25 @@ const SHELL = [
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
+// A navigation is always the app shell. Serving the installed shell first
+// avoids GitHub Pages' deep-link 404 and means a transient navigation fetch
+// cannot turn a perfectly usable installed app into a network error.
+function navigationShell() {
+  return caches
+    .open(CACHE)
+    .then((cache) => cache.match(INDEX, { ignoreVary: true }))
+    .then((response) => response || caches.match(INDEX, { ignoreVary: true }))
+    .then((response) => response || fetch(INDEX))
+    // Cache storage can be unavailable (for example, a browser under storage
+    // pressure). The index request is still worth trying independently.
+    .catch(() => fetch(INDEX))
+    // A Response with a status is renderable and diagnosable. Response.error()
+    // instead becomes the browser's opaque FetchEvent network-error message.
+    .catch(
+      () => new Response("Music is unavailable while offline.", { status: 503, statusText: "Service Unavailable" }),
+    );
+}
+
 self.addEventListener("install", (event) => {
   // Skip waiting so a deploy takes effect on the next load rather than once
   // every tab has been closed.
@@ -71,22 +90,7 @@ self.addEventListener("fetch", (event) => {
   // Any in-app route resolves to the one shell document, the same rule the
   // deployed 404.html implements for a cold load.
   if (request.mode === "navigate") {
-    event.respondWith(
-      // The current version's shell first: the previous cache (kept, above)
-      // also holds an index.html, and caches.match would find that one first.
-      // Never a rejection: one reached the browser as "the FetchEvent …
-      // resulted in a network error response: the promise was rejected"
-      // (storage unavailable, the cache gone): the network's own error instead.
-      fetch(request)
-        .catch(() =>
-          caches
-            .open(CACHE)
-            .then((cache) => cache.match(INDEX, { ignoreVary: true }))
-            .then((r) => r || caches.match(INDEX, { ignoreVary: true }))
-            .then((r) => r || Response.error()),
-        )
-        .catch(() => Response.error()),
-    );
+    event.respondWith(navigationShell());
     return;
   }
 
