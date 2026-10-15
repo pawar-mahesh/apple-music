@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-a4115a2916a6";
+const CACHE = "music-shell-48c169b3ce97";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,25 +10,25 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-C_75Enxk.js",
+  "assets/index-C0VhNgTn.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-BriS5RKY.js",
   "assets/router-ZOD6_S3u.js",
-  "assets/modalControls-zYWXV4Um.js",
-  "assets/Modal-D4XC7dDV.js",
-  "assets/ContextualMenu-77eUX33B.js",
-  "assets/useAccountState-CJCydpQ8.js",
-  "assets/FavouriteIcon-CkzxxOIr.js",
-  "assets/PageStatus-BkE8uvPY.js",
-  "assets/Track-ByAbkvKa.js",
+  "assets/modalControls-CdlgXh9U.js",
+  "assets/Modal-Drn3tQz4.js",
+  "assets/ContextualMenu-BBsbJLHo.js",
+  "assets/useAccountState-C0dtkQzY.js",
+  "assets/FavouriteIcon-D7qgwgGQ.js",
+  "assets/PageStatus-Da111vBH.js",
+  "assets/Track-DC54oNvZ.js",
   "assets/modalControls-Cy6euEVx.css",
   "assets/Modal-DCS7fpO0.css",
   "assets/ContextualMenu-Bx1sgt0h.css",
   "assets/FavouriteIcon-CQlVulA-.css",
   "assets/PageStatus-DP3AeeQe.css",
   "assets/Track-Bszqq76U.css",
-  "assets/index-BSR0sJ_T.css"
+  "assets/index-Dx03dUVC.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
