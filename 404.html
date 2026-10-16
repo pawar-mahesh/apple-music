@@ -71,12 +71,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-music/apple-touch-icon-d47a9e70.png" />
     <link rel="manifest" href="/apple-music/manifest.webmanifest" />
     <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
-         bar: iOS then keeps the page clear of the status bar, the notch and
-         the home indicator by itself — the arrangement music.apple.com relies
-         on. With cover + black-translucent the installed app drew a black bar
-         over the home indicator and the inset spacing doubled up; without
-         cover every env(safe-area-inset-*) is 0, so the --am-safe-* tokens in
-         global.css (kept for a later edge-to-edge design) resolve to nothing.
+         bar: together these are what let the stylesheet do without
+         env(safe-area-inset-*), which is how music.apple.com is built.
+         Without cover the browser keeps the page clear of the status bar,
+         the notch and the home indicator on its own, so no inset is needed
+         and the chrome measures exactly Apple's 52px / 61px. Drawing edge to
+         edge (cover + black-translucent, with inset tokens on every edge
+         surface) was tried with the launch screen and reverted: the
+         installed app showed a black bar over the home indicator. Without
+         cover every env(safe-area-inset-*) reads 0 (see global.css).
          interactive-widget=resizes-content: on Android the keyboard shrinks
          the layout, as a native app's does, so the 100dvh shell, the player
          and the search suggestions stay above it instead of under it. iOS
@@ -116,51 +119,51 @@
          (--am-page-bg, --am-system-primary/-secondary, --am-key-color).
          A fixed overlay outside #root, so the app lays out underneath it from
          the start and nothing moves when it goes. -->
-    <style>html{background:#1f1f1f}#launch{z-index:2147483647;color:#ffffffd9;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;background:#1f1f1f;flex-direction:column;justify-content:center;align-items:center;font-family:-apple-system,BlinkMacSystemFont,SF Pro,Helvetica Neue,Helvetica,Arial,sans-serif;transition:opacity .32s ease-out;animation:.32s ease-out 8s forwards launch-failsafe;display:flex;position:fixed;inset:0}@keyframes launch-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}#launch[data-state=out]{opacity:0;pointer-events:none}.launch-icon{width:96px;height:96px;transition:transform .32s ease-out}#launch[data-state=out] .launch-icon{transform:scale(1.08)}.launch-name{letter-spacing:-.02em;margin:16px 0 0;font-size:26px;font-weight:700;line-height:1.2}.launch-credit{bottom:calc(var(--launch-inset-bottom,env(safe-area-inset-bottom,0px)) + 24px);letter-spacing:-.01em;color:#ffffff8c;margin:0;font-size:12px;font-weight:400;line-height:1.33;position:absolute}@media (prefers-reduced-motion:reduce){#launch,.launch-icon{transition:none}#launch{animation-duration:0s}}</style>
-    <script type="module" crossorigin src="/apple-music/assets/index-CWwB67x1.js"></script>
+    <style>html{background:#1f1f1f}#launch{z-index:2147483647;color:#ffffffd9;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;background:#1f1f1f;flex-direction:column;justify-content:center;align-items:center;font-family:-apple-system,BlinkMacSystemFont,SF Pro,Helvetica Neue,Helvetica,Arial,sans-serif;transition:opacity .32s ease-out;animation:.32s ease-out 8s forwards launch-failsafe;display:flex;position:fixed;inset:0}@keyframes launch-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}#launch[data-state=out]{opacity:0;pointer-events:none}.launch-icon{width:96px;height:96px;transition:transform .32s ease-out}#launch[data-state=out] .launch-icon{transform:scale(1.08)}.launch-name{letter-spacing:-.02em;margin:16px 0 0;font-size:26px;font-weight:700;line-height:1.2}.launch-credit{bottom:calc(env(safe-area-inset-bottom,0px) + 24px);letter-spacing:-.01em;color:#ffffff8c;margin:0;font-size:12px;font-weight:400;line-height:1.33;position:absolute}@media (prefers-reduced-motion:reduce){#launch,.launch-icon{transition:none}#launch{animation-duration:0s}}</style>
+    <script type="module" crossorigin src="/apple-music/assets/index-C0Ahv1Ao.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-m0DTQTRU.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/router-ZOD6_S3u.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/modalControls-h4cSLVj1.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/Modal-BRe4w9g9.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/ContextualMenu-BxcRafNi.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/useAccountState-DAlpBo1W.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/FavouriteIcon-CAMFHlfs.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/PageStatus-Cv2dA1Ar.js">
-    <link rel="modulepreload" crossorigin href="/apple-music/assets/Track-pKSZGCj0.js">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/modalControls-8IE58Bnz.css">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/modalControls-9EKMS7ZE.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/Modal-C4pHm5CR.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/ContextualMenu-l7js-IJa.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/useAccountState-CjW7JjnR.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/FavouriteIcon-Dc59WAV_.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/PageStatus-BM86OvAQ.js">
+    <link rel="modulepreload" crossorigin href="/apple-music/assets/Track-Cz9hd7DH.js">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/modalControls-Cy6euEVx.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/Modal-DCS7fpO0.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/ContextualMenu-Bx1sgt0h.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/FavouriteIcon-CQlVulA-.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/PageStatus-DP3AeeQe.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/Track-Bszqq76U.css">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-BDAqAnJt.css">
-    <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1320x2868.png?v=7f1d09a4">
-    <link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1260x2736.png?v=08484051">
-    <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1206x2622.png?v=8236d17c">
-    <link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1290x2796.png?v=0a126d1f">
-    <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1179x2556.png?v=293f4a62">
-    <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1284x2778.png?v=63070aa1">
-    <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1170x2532.png?v=488c1e41">
-    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1125x2436.png?v=b20c8214">
-    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1242x2688.png?v=3b296f42">
-    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/828x1792.png?v=815f71e9">
-    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/750x1334.png?v=55583a19">
-    <link rel="apple-touch-startup-image" media="(device-width: 1032px) and (device-height: 1376px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/2064x2752.png?v=545a514c">
-    <link rel="apple-touch-startup-image" media="(device-width: 1032px) and (device-height: 1376px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2752x2064.png?v=370d9e03">
-    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/2048x2732.png?v=923a371c">
-    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2732x2048.png?v=f5cf85bd">
-    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1210px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1668x2420.png?v=a7541633">
-    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1210px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2420x1668.png?v=e4515f8f">
-    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1668x2388.png?v=5a5baeaa">
-    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2388x1668.png?v=abb80fc8">
-    <link rel="apple-touch-startup-image" media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1640x2360.png?v=cf5f6562">
-    <link rel="apple-touch-startup-image" media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2360x1640.png?v=111d087a">
-    <link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1488x2266.png?v=d2cd6c8c">
-    <link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2266x1488.png?v=cc44999c">
-    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1620x2160.png?v=82b222f9">
-    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2160x1620.png?v=7226e41e">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-BvpQj24Y.css">
+    <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1320x2868.png?v=e7cfb6b7">
+    <link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1260x2736.png?v=a222a434">
+    <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1206x2622.png?v=a183baf8">
+    <link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1290x2796.png?v=b8184b59">
+    <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1179x2556.png?v=ba61bfe2">
+    <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1284x2778.png?v=8663238d">
+    <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1170x2532.png?v=f534c7c8">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1125x2436.png?v=647ab998">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1242x2688.png?v=ce96c470">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/828x1792.png?v=0ccdd4f6">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/750x1334.png?v=0e027162">
+    <link rel="apple-touch-startup-image" media="(device-width: 1032px) and (device-height: 1376px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/2064x2752.png?v=7a0fbd5e">
+    <link rel="apple-touch-startup-image" media="(device-width: 1032px) and (device-height: 1376px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2752x2064.png?v=a4babf0e">
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/2048x2732.png?v=7145e425">
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2732x2048.png?v=55946b4e">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1210px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1668x2420.png?v=8241ee13">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1210px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2420x1668.png?v=a3a8502c">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1668x2388.png?v=8c79883c">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2388x1668.png?v=ab8083a1">
+    <link rel="apple-touch-startup-image" media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1640x2360.png?v=6b9e56e6">
+    <link rel="apple-touch-startup-image" media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2360x1640.png?v=a645dc18">
+    <link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1488x2266.png?v=045e88bb">
+    <link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2266x1488.png?v=b19b5537">
+    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/apple-music/launch/1620x2160.png?v=9c4505da">
+    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/apple-music/launch/2160x1620.png?v=ee46db08">
   </head>
   <body>
     <div id="launch" aria-hidden="true">
