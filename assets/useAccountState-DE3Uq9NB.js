@@ -1,0 +1,1 @@
+import{D as e}from"./Modal-D-xlZewA.js";function t(){let{data:t,isLoading:n,isError:r,refetch:i}=e();return{account:t??void 0,state:t?`signedIn`:n?`checking`:r?`unavailable`:`signedOut`,refetch:i}}export{t};
