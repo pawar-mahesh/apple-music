@@ -70,27 +70,27 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/apple-music/favicon-1abbf1db.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-music/apple-touch-icon-d47a9e70.png" />
     <link rel="manifest" href="/apple-music/manifest.webmanifest" />
-    <!-- Drawn edge to edge, as a native app is: viewport-fit=cover lets the
-         page paint under the status bar, the notch and the home indicator,
-         and the black-translucent status bar lays its white clock over the
-         page rather than over a black strip of its own. The space that takes
-         is given back through env(safe-area-inset-*), read ONCE as tokens in
-         global.css (--am-safe-*) by the few surfaces that touch a screen
-         edge; nothing else in the app knows about it.
+    <!-- No viewport-fit=cover, and an opaque (not black-translucent) status
+         bar: iOS then keeps the page clear of the status bar, the notch and
+         the home indicator by itself — the arrangement music.apple.com relies
+         on. With cover + black-translucent the installed app drew a black bar
+         over the home indicator and the inset spacing doubled up; without
+         cover every env(safe-area-inset-*) is 0, so the --am-safe-* tokens in
+         global.css (kept for a later edge-to-edge design) resolve to nothing.
          interactive-widget=resizes-content: on Android the keyboard shrinks
          the layout, as a native app's does, so the 100dvh shell, the player
          and the search suggestions stay above it instead of under it. iOS
-         ignores it and already behaves that way for fixed chrome.
+         ignores it.
          Pinch zoom is left on (no maximum-scale / user-scalable): WCAG 1.4.4.
          Double-tap zoom is off anyway — touch-action: manipulation in
          global.css. -->
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <!-- The name iOS puts under the home-screen icon, and the one Windows
          uses for a pinned site. Both say "Music", as the manifest does, so an
          installed copy is labelled the same on every platform. -->
@@ -117,7 +117,7 @@
          A fixed overlay outside #root, so the app lays out underneath it from
          the start and nothing moves when it goes. -->
     <style>html{background:#1f1f1f}#launch{z-index:2147483647;color:#ffffffd9;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;background:#1f1f1f;flex-direction:column;justify-content:center;align-items:center;font-family:-apple-system,BlinkMacSystemFont,SF Pro,Helvetica Neue,Helvetica,Arial,sans-serif;transition:opacity .32s ease-out;animation:.32s ease-out 8s forwards launch-failsafe;display:flex;position:fixed;inset:0}@keyframes launch-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}#launch[data-state=out]{opacity:0;pointer-events:none}.launch-icon{width:96px;height:96px;transition:transform .32s ease-out}#launch[data-state=out] .launch-icon{transform:scale(1.08)}.launch-name{letter-spacing:-.02em;margin:16px 0 0;font-size:26px;font-weight:700;line-height:1.2}.launch-credit{bottom:calc(var(--launch-inset-bottom,env(safe-area-inset-bottom,0px)) + 24px);letter-spacing:-.01em;color:#ffffff8c;margin:0;font-size:12px;font-weight:400;line-height:1.33;position:absolute}@media (prefers-reduced-motion:reduce){#launch,.launch-icon{transition:none}#launch{animation-duration:0s}}</style>
-    <script type="module" crossorigin src="/apple-music/assets/index-DtzylkiX.js"></script>
+    <script type="module" crossorigin src="/apple-music/assets/index-CWwB67x1.js"></script>
     <link rel="modulepreload" crossorigin href="/apple-music/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/react-D3MgmOsQ.js">
     <link rel="modulepreload" crossorigin href="/apple-music/assets/state-m0DTQTRU.js">
@@ -135,7 +135,7 @@
     <link rel="stylesheet" crossorigin href="/apple-music/assets/FavouriteIcon-CQlVulA-.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/PageStatus-DP3AeeQe.css">
     <link rel="stylesheet" crossorigin href="/apple-music/assets/Track-Bszqq76U.css">
-    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-ZHvKw1m4.css">
+    <link rel="stylesheet" crossorigin href="/apple-music/assets/index-BDAqAnJt.css">
     <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1320x2868.png?v=7f1d09a4">
     <link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1260x2736.png?v=08484051">
     <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/apple-music/launch/1206x2622.png?v=8236d17c">
