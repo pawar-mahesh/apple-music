@@ -1,5 +1,5 @@
 /* Generated at build time by vite.config.ts — do not edit in dist. */
-const CACHE = "music-shell-ef8eb6adfc1c";
+const CACHE = "music-shell-b9f9795a8c3a";
 // Wherever this worker was registered from — the scope is the app's base,
 // whatever path that turns out to be.
 const SCOPE = self.registration.scope;
@@ -10,25 +10,25 @@ const SHELL = [
   "favicon-1abbf1db.png",
   "apple-touch-icon-d47a9e70.png",
   "manifest.webmanifest",
-  "assets/index-D665NZuO.js",
+  "assets/index-CaeIlH1E.js",
   "assets/rolldown-runtime-CbXtAM7H.js",
   "assets/react-D3MgmOsQ.js",
   "assets/state-m0DTQTRU.js",
   "assets/router-ZOD6_S3u.js",
-  "assets/modalControls-9EKMS7ZE.js",
-  "assets/Modal-Cl_ANouw.js",
-  "assets/ContextualMenu-XqTB4gyB.js",
-  "assets/useAccountState-CKyFDntC.js",
-  "assets/FavouriteIcon-D5zaMmK8.js",
-  "assets/PageStatus-BM86OvAQ.js",
-  "assets/Track-DGvnno89.js",
+  "assets/modalControls-C_f6TxGC.js",
+  "assets/Modal-DhYMJej_.js",
+  "assets/useAccountState-BEd6iU-g.js",
+  "assets/FavouriteIcon-Dg2r54Nm.js",
+  "assets/ContextualMenu-Bc_54408.js",
+  "assets/PageStatus-C3P_42z6.js",
+  "assets/Track-DDKAPZdb.js",
   "assets/modalControls-Cy6euEVx.css",
-  "assets/Modal-DCS7fpO0.css",
-  "assets/ContextualMenu-Bx1sgt0h.css",
+  "assets/Modal-J5io_9bB.css",
   "assets/FavouriteIcon-CQlVulA-.css",
+  "assets/ContextualMenu-U1-H8l8a.css",
   "assets/PageStatus-DP3AeeQe.css",
   "assets/Track-Bszqq76U.css",
-  "assets/index-BvpQj24Y.css"
+  "assets/index-CTeo0mI7.css"
 ].map((path) => new URL(path, SCOPE).href);
 const INDEX = new URL("index.html", SCOPE).href;
 
@@ -55,11 +55,14 @@ self.addEventListener("install", (event) => {
   // Skip waiting so a deploy takes effect on the next load rather than once
   // every tab has been closed.
   self.skipWaiting();
-  // `cache: "reload"` bypasses the HTTP cache: Pages serves index.html with
-  // max-age=600, so a worker installed just after a deploy could otherwise
-  // precache the PREVIOUS build's document, naming assets this cache lacks.
+  // `cache: "no-cache"` revalidates every file with the server: Pages serves
+  // index.html with max-age=600, so a worker installed just after a deploy
+  // could otherwise precache the PREVIOUS build's document, naming assets this
+  // cache lacks. Not "reload": that re-downloaded all of them, 220 KB gzip per
+  // install, though the hashed files the page had just loaded (and, after a
+  // deploy, the unchanged vendor chunks) answer 304 from the HTTP cache.
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(SHELL.map((url) => new Request(url, { cache: "reload" })))),
+    caches.open(CACHE).then((cache) => cache.addAll(SHELL.map((url) => new Request(url, { cache: "no-cache" })))),
   );
 });
 
@@ -103,18 +106,26 @@ self.addEventListener("fetch", (event) => {
   // A fetch that fails (offline, a flaky connection, a deploy replacing the
   // files mid-load) answers as the network error it is: left to reject, it
   // surfaced as "Uncaught (in promise) TypeError: Failed to fetch" in the console.
+  // This build's cache first, then any (the previous build's, kept for a tab
+  // still on it): caches.match alone answers from the OLDEST cache, which served
+  // an unhashed file (the manifest) one deploy late.
   event.respondWith(
-    caches.match(request, { ignoreVary: true }).then(
-      (hit) =>
-        hit ||
-        fetch(request).then((response) => {
-          if (response.ok && response.type === "basic") {
-            const copy = response.clone();
-            // A full disk is a cache miss next time, not an error now.
-            caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
-          }
-          return response;
-        }, () => Response.error()),
-    ).catch(() => Response.error()),
+    caches
+      .open(CACHE)
+      .then((cache) => cache.match(request, { ignoreVary: true }))
+      .then((hit) => hit || caches.match(request, { ignoreVary: true }))
+      .then(
+        (hit) =>
+          hit ||
+          fetch(request).then((response) => {
+            if (response.ok && response.type === "basic") {
+              const copy = response.clone();
+              // A full disk is a cache miss next time, not an error now.
+              caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
+            }
+            return response;
+          }, () => Response.error()),
+      )
+      .catch(() => Response.error()),
   );
 });
